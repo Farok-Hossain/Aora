@@ -30,6 +30,12 @@ const SignUp = () => {
             Sign up to Aora
           </Text>
           <FormField
+            title="Username"
+            value={form.username}
+            handleChangeText={(e) => setForm({ ...form, username: e })}
+            otherStyles="mt-10"
+          />
+          <FormField
             title="Email"
             value={form.email}
             handleChangeText={(e) => setForm({ ...form, email: e })}
@@ -51,13 +57,13 @@ const SignUp = () => {
 
           <View className=" justify-center flex-row gap-2">
             <Text className="text-gray-100 text-lg font-pregular">
-              Don't have a account?
+              Have an account already?
             </Text>
             <Link
-              href="/sign-up"
+              href="/sign-in"
               className=" text-secondary font-psemibold text-lg"
             >
-              Sign up
+              Sign in
             </Link>
           </View>
         </View>
