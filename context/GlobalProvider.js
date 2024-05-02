@@ -3,7 +3,7 @@ import { getCurrentUser } from "../lib/appwrite";
 
 const GlobalContext = createContext();
 
-const useGlobalContext = () => useContext(GlobalContext);
+export const useGlobalContext = () => useContext(GlobalContext);
 
 const GlobalProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
