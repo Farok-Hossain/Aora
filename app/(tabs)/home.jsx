@@ -16,13 +16,16 @@ import EmptyState from "../../components/EmptyState";
 import { getAllPosts } from "../../lib/appwrite";
 
 const Home = () => {
+  const { data: posts, refetch } = useState(getAllPosts);
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = async () => {
     setRefreshing(true);
-    // re call videos -> if any new videos appeard
+    await refetch();
     setRefreshing(false);
   };
+
+  console.log(posts);
   return (
     <SafeAreaView className="bg-primary h-full">
       <FlatList
