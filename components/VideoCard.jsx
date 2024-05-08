@@ -48,7 +48,7 @@ const VideoCard = ({
         <TouchableOpacity
           activeOpacity={0.7}
           onPress={() => setPlay(true)}
-          className="w-full h-60 rounded-lg mt-3 relative justify-center items-center"
+          className="w-full h-60 rounded-xl mt-3 relative justify-center items-center"
         >
           <Image
             source={{ uri: thumbnail }}

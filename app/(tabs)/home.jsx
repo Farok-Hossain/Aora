@@ -1,23 +1,17 @@
-import {
-  View,
-  Text,
-  FlatList,
-  Image,
-  RefreshControl,
-  Alert,
-} from "react-native";
-import React, { useEffect, useState } from "react";
+import { View, Text, FlatList, Image, RefreshControl } from "react-native";
+import { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { images } from "../../constants";
 import SearchInput from "../../components/SearchInput";
 import Trending from "../../components/Trending";
 import EmptyState from "../../components/EmptyState";
+import useAppwrite from "../../lib/useAppwrite";
 import { getAllPosts } from "../../lib/appwrite";
 import VideoCard from "../../components/VideoCard";
 
 const Home = () => {
-  const { data: posts, refetch } = useState(getAllPosts);
+  const { data: posts, refetch } = useAppwrite(getAllPosts);
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = async () => {
@@ -56,7 +50,7 @@ const Home = () => {
                 Latest Videos
               </Text>
 
-              <Trending posts={posts ?? []} />
+              <Trending posts={[{ id: 1 }, { id: 2 }, { id: 3 }] ?? []} />
             </View>
           </View>
         )}
