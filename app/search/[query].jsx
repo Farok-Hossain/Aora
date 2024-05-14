@@ -26,37 +26,20 @@ const Search = () => {
         keyExtractor={(item) => item.$id}
         renderItem={({ item }) => <VideoCard video={item} />}
         ListHeaderComponent={() => (
-          <View className="my-6 px-4 space-y-6">
-            <View className="justify-between items-start flex-row mb-6">
-              <View>
-                <Text className="font-psemibold text-sm text-gray-100">
-                  Welcome Back
-                </Text>
-                <Text className="text-2xl font-psemibold text-white">Aora</Text>
-              </View>
-              <View className="mt-1.5">
-                <Image
-                  className="w-9 h-10"
-                  resizeMode="contain"
-                  source={images.logoSmall}
-                />
-              </View>
-            </View>
-            <SearchInput />
-
-            <View className="w-full flex-1 pt-5 pb-8">
-              <Text className="text-gray-100 text-lg font-pregular mb-3">
-                Latest Videos
-              </Text>
-
-              <Trending posts={latestPosts ?? []} />
+          <View className="my-6 px-4">
+            <Text className="font-psemibold text-sm text-gray-100">
+              Search Results
+            </Text>
+            <Text className="text-2xl font-psemibold text-white">{query}</Text>
+            <View className="mt-6 mb-8">
+              <SearchInput initialQuery={query} />
             </View>
           </View>
         )}
         ListEmptyComponent={() => (
           <EmptyState
             title="No Videos Found"
-            subtitle="Be the first one to upload a video"
+            subtitle="No videos found for this search query"
           />
         )}
       />
