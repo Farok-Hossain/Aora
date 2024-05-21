@@ -1,14 +1,13 @@
-import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
-import { useEffect } from "react";
+import { View, FlatList, TouchableOpacity, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import SearchInput from "../../components/SearchInput";
 import EmptyState from "../../components/EmptyState";
 import useAppwrite from "../../lib/useAppwrite";
 import VideoCard from "../../components/VideoCard";
 import { getUserPosts } from "../lib/appwrite";
 import { useGlobalContext } from "../context/GlobalProvider";
 import icons from "../constants";
+import InfoBox from "../components/InfoBox";
 
 const Profile = () => {
   const { user, setUser, setIsLoggedIn } = useGlobalContext();
@@ -41,6 +40,7 @@ const Profile = () => {
                 resizeMode="cover"
               />
             </View>
+            <InfoBox />
           </View>
         )}
         ListEmptyComponent={() => (
