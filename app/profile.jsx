@@ -1,4 +1,4 @@
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
 import { useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -8,6 +8,7 @@ import useAppwrite from "../../lib/useAppwrite";
 import VideoCard from "../../components/VideoCard";
 import { getUserPosts } from "../lib/appwrite";
 import { useGlobalContext } from "../context/GlobalProvider";
+import icons from "../constants";
 
 const Profile = () => {
   const { user, setUser, setIsLoggedIn } = useGlobalContext();
@@ -19,7 +20,17 @@ const Profile = () => {
         data={posts}
         keyExtractor={(item) => item.$id}
         renderItem={({ item }) => <VideoCard video={item} />}
-        ListHeaderComponent={() => <View></View>}
+        ListHeaderComponent={() => (
+          <View className="w-full justify-center items-center mt-6  mb-12 px-4">
+            <TouchableOpacity>
+              <Image
+                source={icons.logout}
+                resizeMode="contain"
+                className="w-6 h-6"
+              />
+            </TouchableOpacity>
+          </View>
+        )}
         ListEmptyComponent={() => (
           <EmptyState
             title="No Videos Found"
