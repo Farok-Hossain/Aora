@@ -4,6 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import FormField from "../../components/FormField";
 import { Video, ResizeMode } from "expo-av";
 import { icons } from "../../constants";
+import CustomButton from "../../components/CustomButton";
 
 const Create = () => {
   const [uploading, setUploading] = useState(false);
@@ -13,6 +14,9 @@ const Create = () => {
     thumbnail: null,
     prompt: "",
   });
+
+  const openPicker = async (selectType) => {};
+  const submit = () => {};
 
   return (
     <SafeAreaView className="bg-primary h-full">
@@ -31,7 +35,7 @@ const Create = () => {
           <Text className="text-base text-gray-100 font-pmedium">
             Upload Video
           </Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => openPicker("video")}>
             {form.video ? (
               <Video
                 source={{ uri: form.video.uri }}
@@ -57,7 +61,7 @@ const Create = () => {
           <Text className="text-base text-gray-100 font-pmedium">
             Thumbnail Image
           </Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => openPicker("image")}>
             {form.thumbnail ? (
               <Image
                 source={{ uri: form.thumbnail.uri }}
@@ -71,10 +75,26 @@ const Create = () => {
                   resizeMode="contain"
                   className="w-5 h-5"
                 />
+                <Text className="text-sm text-gray-100 font-pmedium">
+                  Choose a file
+                </Text>
               </View>
             )}
           </TouchableOpacity>
         </View>
+        <FormField
+          title="AI Prompt"
+          value={form.prompt}
+          placeholder="The prompt you used to create this video"
+          handleChangeText={(e) => setForm({ ...form, prompt: e })}
+          otherStyles="mt-7"
+        />
+        <CustomButton
+          title="Submit & Publish"
+          handlePress={submit}
+          containerStyles="mt-7"
+          isLoading={uploading}
+        />
       </ScrollView>
     </SafeAreaView>
   );
