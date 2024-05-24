@@ -23,7 +23,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.farokhossain1.aora"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -31,6 +32,14 @@
     "plugins": [
       "expo-router",
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "d85076a4-ca07-40e4-b6d3-bc66409d3444"
+      }
+    }
   }
 }
